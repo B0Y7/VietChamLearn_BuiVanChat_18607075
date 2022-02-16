@@ -1,0 +1,111 @@
+﻿@{
+
+    Layout = null;
+}
+
+<div class="container">
+    <fieldset>
+        <legend> Chọn Ảnh Để Dịch</legend>
+        @*"submitOcr", "Default", FormMethod.Post, new { enctype = "multipart/form-data" }*@
+        @using (Html.BeginForm("submitOcr", "Default", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">
+                <label>Ảnh</label>
+                <input type="file" class="form-control" name="file" id="file" />
+                <span class="help-block">File đang chạy</span>
+
+            </div>
+            @*<input type="submit" class="btn btn-primary" value="Dịch" name="submit" />*@
+            <button type="submit" onsubmit="return false" class="btn btn-primary" onclick="TransImg();" name="submit">Dịch</button>
+        }
+
+
+    </fieldset>
+    @if (ViewBag.Result == true)
+    {
+        <fieldset>
+            <legend> Nội dung trả về: </legend>
+            <div class="form-group">
+                <label>Độ chính xác: </label>
+                <label>@ViewBag.mean</label>
+            </div>
+            <div class="form-group">
+                <label>Nội dung</label>
+                <textarea id="TransImg" class="form-control" readonly rows="10">@ViewBag.res</textarea>
+            </div>
+        </fieldset>
+    }
+
+</div>
+<script src="~/Scripts/jquery-ui-1.10.3.min.js"></script>
+<link href="~/Content/Styles/ocr.css" rel="stylesheet" />
+<script type="text/javascript">
+    //dich bang ảnh
+    function TransImg() {
+        debugger
+        var file = $("#file").val();
+        @*$('#ocrText').dialog(
+            {
+            autoOpen: false,
+            resizable: false,
+            width: '900px',
+            height: 'auto',
+            modal: true,
+            });
+        $.get('@Url.Action("submitOcr", "Default")/?file=' + file, function (html) {
+                            $("#ocrText").html(html);
+                        });
+        $('#ocrText').dialog('open');
+        $("#ocrText").dialog("option", "title", "Dịch Văn Bảng Bằng Hình Ảnh");
+        $('container').css('background', '#0055A8');
+        $('#inputSubmit').attr('value', '');*@
+        //$.ajax({
+        //    url: '/Default/submitOcr',
+        //    method: "POST", dataType: "Json",
+        //    data: {
+        //        file: file
+        //    },
+        //    success: function (rs) {
+        //            $("#res").val(rs.result);
+        //            $("#res1").val(rs.result);
+        //            $("#mean").text(rs.mean);
+        //        HideLoading();
+        //    }
+
+        //});
+        $.ajax({
+            async: false,
+            url: '/Default/submitOcr',
+            dataType: "html",
+            type: "GET",
+            /*contentType: 'application/html; charset=utf-8',*/
+            success: function (rs) {
+               /* listwords = listwords;*/
+                //sofileky = TransDone.length;
+                //if (sofileky==0)
+                //{
+                //    //alert("Không có file nào đủ điều kiện ký số, hoặc chưa chọn file vui lòng kiểm tra lại");
+                //}
+                ////console.log('Done0' + data);
+                ////alert(listwords)
+                //alert(rs);
+                /*var lisst = rs.split(" ");*/
+                debugger
+            /* var newrs = rs.split(',').join(' ');*/
+                @*$.get('@Url.Action("submitOcr", "Default")', function (html) {
+                            $("#ocrText").html(html);
+                });*@
+                $("#TransImg").val(rs);
+                //var listss = $("#TransImg").val().replace(/\,/g, ' ');
+                //$("#TransImg").val(listss);
+                return 1;
+
+
+            },
+            error: function (xhr) {
+                alert('error' + xhr);
+            }
+
+        });
+    }
+</script>

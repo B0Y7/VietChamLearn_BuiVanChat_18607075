@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VietChamLearn_BuiVanChat_18607075Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'VietChamLearn_BuiVanChat_18607075.dbo.Category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id_cate" />
+            <PropertyRef Name="Name_cate" />
+            <PropertyRef Name="Hide" />
+          </Key>
+          <Property Name="Id_cate" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_cate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Slug_cate" Type="nchar" MaxLength="50" />
+          <Property Name="Hide" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'VietChamLearn_BuiVanChat_18607075.dbo.Menu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id_Menu" />
+            <PropertyRef Name="Name_Menu" />
+          </Key>
+          <Property Name="Id_Menu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_Menu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Slug" Type="nchar" MaxLength="50" />
+          <Property Name="Hide" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'VietChamLearn_BuiVanChat_18607075.dbo.Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id_User" />
+            <PropertyRef Name="Name_User" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="Id_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_User" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="email" Type="nchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'VietChamLearn_BuiVanChat_18607075.dbo.Words' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Words">
+          <Key>
+            <PropertyRef Name="Id_Word" />
+            <PropertyRef Name="Viet_Word" />
+            <PropertyRef Name="Cham_Word" />
+            <PropertyRef Name="Description_Word" />
+            <PropertyRef Name="Image_Word" />
+            <PropertyRef Name="Void_Word" />
+          </Key>
+          <Property Name="Id_Word" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Viet_Word" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Cham_Word" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Description_Word" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Image_Word" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="Void_Word" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="Hide_Word" Type="bit" />
+          <Property Name="Characters_Word" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="VietChamLearn_BuiVanChat_18607075ModelStoreContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Category].[Id_cate] AS [Id_cate], 
+    [Category].[Name_cate] AS [Name_cate], 
+    [Category].[Slug_cate] AS [Slug_cate], 
+    [Category].[Hide] AS [Hide]
+    FROM [dbo].[Category] AS [Category]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Menu" EntityType="Self.Menu" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Menu].[Id_Menu] AS [Id_Menu], 
+    [Menu].[Name_Menu] AS [Name_Menu], 
+    [Menu].[Slug] AS [Slug], 
+    [Menu].[Hide] AS [Hide]
+    FROM [dbo].[Menu] AS [Menu]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Users].[Id_User] AS [Id_User], 
+    [Users].[Name_User] AS [Name_User], 
+    [Users].[Password] AS [Password], 
+    [Users].[email] AS [email]
+    FROM [dbo].[Users] AS [Users]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Words" EntityType="Self.Words" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Words].[Id_Word] AS [Id_Word], 
+    [Words].[Viet_Word] AS [Viet_Word], 
+    [Words].[Cham_Word] AS [Cham_Word], 
+    [Words].[Description_Word] AS [Description_Word], 
+    [Words].[Image_Word] AS [Image_Word], 
+    [Words].[Void_Word] AS [Void_Word], 
+    [Words].[Hide_Word] AS [Hide_Word], 
+    [Words].[Characters_Word] AS [Characters_Word]
+    FROM [dbo].[Words] AS [Words]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VietChamLearn_BuiVanChat_18607075Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id_cate" />
+            <PropertyRef Name="Name_cate" />
+            <PropertyRef Name="Hide" />
+          </Key>
+          <Property Name="Id_cate" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_cate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Slug_cate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Hide" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id_Menu" />
+            <PropertyRef Name="Name_Menu" />
+          </Key>
+          <Property Name="Id_Menu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_Menu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Slug" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Hide" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id_User" />
+            <PropertyRef Name="Name_User" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="Id_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Word">
+          <Key>
+            <PropertyRef Name="Id_Word" />
+            <PropertyRef Name="Viet_Word" />
+            <PropertyRef Name="Cham_Word" />
+            <PropertyRef Name="Description_Word" />
+            <PropertyRef Name="Image_Word" />
+            <PropertyRef Name="Void_Word" />
+          </Key>
+          <Property Name="Id_Word" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Viet_Word" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cham_Word" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description_Word" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Image_Word" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Void_Word" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Hide_Word" Type="Boolean" />
+          <Property Name="Characters_Word" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="VietChamLearn_BuiVanChat_18607075Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Words" EntityType="Self.Word" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VietChamLearn_BuiVanChat_18607075ModelStoreContainer" CdmEntityContainer="VietChamLearn_BuiVanChat_18607075Entities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="VietChamLearn_BuiVanChat_18607075Model.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Id_cate" ColumnName="Id_cate" />
+                <ScalarProperty Name="Name_cate" ColumnName="Name_cate" />
+                <ScalarProperty Name="Slug_cate" ColumnName="Slug_cate" />
+                <ScalarProperty Name="Hide" ColumnName="Hide" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="VietChamLearn_BuiVanChat_18607075Model.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="Id_Menu" ColumnName="Id_Menu" />
+                <ScalarProperty Name="Name_Menu" ColumnName="Name_Menu" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="Hide" ColumnName="Hide" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="VietChamLearn_BuiVanChat_18607075Model.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id_User" ColumnName="Id_User" />
+                <ScalarProperty Name="Name_User" ColumnName="Name_User" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Words">
+            <EntityTypeMapping TypeName="VietChamLearn_BuiVanChat_18607075Model.Word">
+              <MappingFragment StoreEntitySet="Words">
+                <ScalarProperty Name="Id_Word" ColumnName="Id_Word" />
+                <ScalarProperty Name="Viet_Word" ColumnName="Viet_Word" />
+                <ScalarProperty Name="Cham_Word" ColumnName="Cham_Word" />
+                <ScalarProperty Name="Description_Word" ColumnName="Description_Word" />
+                <ScalarProperty Name="Image_Word" ColumnName="Image_Word" />
+                <ScalarProperty Name="Void_Word" ColumnName="Void_Word" />
+                <ScalarProperty Name="Hide_Word" ColumnName="Hide_Word" />
+                <ScalarProperty Name="Characters_Word" ColumnName="Characters_Word" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

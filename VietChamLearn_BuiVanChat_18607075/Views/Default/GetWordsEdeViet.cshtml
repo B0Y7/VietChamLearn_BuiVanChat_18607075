@@ -1,0 +1,87 @@
+﻿@model List<VietChamLearn_BuiVanChat_18607075.Models.Word>
+@{
+    ViewBag.Title = "GetWordsEdeViet";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Kết quả tìm kiếm từ : @ViewBag.ede</h2>
+@foreach (var item in Model)
+{
+    <div class="row">
+
+        <div style="color: #1198b6!important; font-size: 20px" class="col-md-3">
+            <div style="border-bottom: 1px dotted #e4e9f0;  margin-bottom: 20px;">
+                <h2 style="margin: 0 0 -2px;
+    padding-bottom: 5px;
+    display: inline-block;
+    border-bottom: 2px solid #428bca; font-size: 20px;">
+                    <strong style="">@item.Cham_Word</strong>
+                </h2>
+
+                <!-- Sound -->
+                <a id="pron" href="#" onclick="ga('send', 'event', {eventCategory: 'Play Audio from ',eventAction: 'Click'});"><img src="~/Content/IMG/sound-button.jpg" alt="Play"></a>
+                <audio id="audioFile" preload="auto"><source src="" type="audio/mpeg"></audio>
+                <!-- End Sound -->
+
+            </div>
+
+
+
+        </div>
+
+
+        <div class="col-md-9">
+            <span style="padding: 5px 8px; background-color: #f3f3f3;">
+                @*@if (item.Id_cate == 0)
+                {
+                    <label>Chưa xác định</label>
+                }
+                @if (item.Id_cate == 2)
+                {
+                    <label>Động từ</label>
+                }
+                @if (item.Id_cate == 3)
+                {
+                    <label>Danh từ</label>
+                }
+                @if (item.Id_cate == 4)
+                {
+                    <label>Tính từ</label>
+                }
+                @if (item.Id_cate == 5)
+                {
+                    <label>Trạng từ</label>
+                }*@
+                Loại từ
+                
+            </span>
+            <p style="margin-top: .4rem; color: #1198b6; font-size: 20px;">@item.Viet_Word</p>
+            <ul>
+                <li><p><em>Ví dụ: @item.Description_Word</em></p></li>
+            </ul>
+            <!-- <hr> -->
+            <div hidden="">
+                <span style="padding: 5px 8px; background-color: #f3f3f3;">Chưa xác định</span><br>
+                <p style="margin-top: .4rem; color: #1198b6; font-size: 20px;"></p>
+
+                <ul>
+                    <li><p><em>Ví dụ: </em></p></li>
+                </ul>
+            </div>
+
+            <div hidden="">
+                <span style="padding: 5px 8px; background-color: #f3f3f3;">Chưa xác định</span><br>
+                <p style="margin-top: .4rem; color: #1198b6; font-size: 20px;"></p>
+
+                <ul>
+                    <li><p><em>Ví dụ: </em></p></li>
+                </ul>
+            </div>
+
+
+        </div>
+
+    </div>
+}
+
+<hr />
