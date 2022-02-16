@@ -10,6 +10,7 @@ using VietChamLearn_BuiVanChat_18607075.Models;
 using Newtonsoft.Json;
 using PagedList;
 
+
 using Tesseract;
 
 namespace VietChamLearn_BuiVanChat_18607075.Controllers
@@ -135,30 +136,40 @@ namespace VietChamLearn_BuiVanChat_18607075.Controllers
                         {
                             ViewBag.Result = true;
                             var pageImg = page.GetText();
-                            var pageTxt = pageImg.TrimEnd('\n');
-                            var TxtImg = pageTxt.Split(' ');
-                            var listId = new List<string>();
+                            var pageTxt = pageImg.TrimEnd('\n');//RA ĐƯỢC CHỮ TỪ ẢNH
+                           /* var TxtImg = pageTxt.Split(' '); */
+                            var listId = new List<string>(); //KHAI BÁO MỘT CHUỖI STRING MỚI CHỨA ID CỦA CÁC CHỮ ĐÃ TÁCH RA
                             if (!string.IsNullOrEmpty(pageTxt))
                             {
-                                var list = pageTxt.Split(',').ToList();
+                                var list = pageTxt.Split(' ').ToList(); // TÁCH CHỮ RA KHỎI CHUỖI
                                 if (list != null && list.Count > 0)
                                 {
                                     foreach (var item in list)
                                     {
-                                        //int w = wordvietTransID(item);
-                                        //int i = new int();
-                                        //i = Int32.Parse(item);
-                                        listId.Add(item);
+                                        
+                                        listId.Add(item); //lưu vào ListId
 
                                     }
                                 }
                             }
-                            var obj = db.Words.Where(x => listId.Contains(x.Viet_Word)).Select(x => x.Cham_Word).ToList();
+                            var chuoi = new List<string>(); //khai bao 1 list string mới để chứa chuỗi string khi + vào khaonr cách
+                            var text = db.Words.Where(x => listId.Contains(x.Viet_Word)).Select(x => x.Cham_Word).ToList();//truy vấn
+                            if (text.Count >0 || text!= null)
+                            {
+                                foreach(var item in text)
+                                {
+                                    var chu = item + " ";
+                                    chuoi.Add(chu); //add chữ vào chuỗi list string 
+                                }
+                                
+                            }
+
+                            var obj = string.Concat(chuoi).ToString(); // conver json to string
 
                             ViewBag.res = obj;
                             //var catchuoi = Convert.ToString(page.GetText().Split(new char[] { ' ', ',', '.', ':', '-' }));
                             ViewBag.mean = String.Format("{0:p}", page.GetMeanConfidence());
-                            return View(obj);
+                            return View();
 
                         }
                     }

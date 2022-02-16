@@ -225,7 +225,7 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-md-8">
+        <div class="col-md-12">
 
 
             <button class="btn btn-primary" onclick="ocr();" style="width:120px;display: inline-flex;justify-content: center;
@@ -239,13 +239,13 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs d-flex justify-content-between" role="tablist">
                 <li style="width: 33.3%;" class="nav-item">
-                    <a class="nav-link active " data-toggle="tab" href="#edeviet">Từ điển Êđê - Việt</a>
+                    <a class="nav-link active " data-toggle="tab" href="#edeviet">Từ điển Chăm - Việt</a>
                 </li>
                 <li style="width: 33.3%;" class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#vietede">Từ điển Việt - Êđê</a>
+                    <a class="nav-link" data-toggle="tab" href="#vietede">Từ điển Việt - Chăm</a>
                 </li>
                 <li style="width: 33.3%;" class="nav-item">
-                    <a class="nav-link " data-toggle="tab" href="#dichcau">Dịch câu Việt - Êđê</a>
+                    <a class="nav-link " data-toggle="tab" href="#dichcau">Dịch câu Việt - Chăm</a>
                 </li>
                 <!-- <li class="nav-item">
                   <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
@@ -260,7 +260,7 @@
 
                         <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" autocomplete="off" action="/Default/GetWordsEdeViet" method="get" role="search">
                             <div class="input-group" style="background-color:white; margin-top:15px;margin-bottom:10px">
-                                <input style="width:650px" class="form-control bg-light border-0 small " type="text" name="keyword" value="" placeholder="Nhập từ Êđê muốn tra cứu ..." id="txtKeyword" aria-label="Search" aria-describedby="basic-addon2">
+                                <input style="width:650px" class="form-control bg-light border-0 small " type="text" name="keyword" value="" placeholder="Nhập từ Chăm muốn tra cứu ..." id="txtKeyword" aria-label="Search" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
                                 </div>
@@ -297,15 +297,16 @@
 
                         <form onsubmit="return false" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" autocomplete="off">
                             <div class="input-group" style="background-color:white; margin-top:15px;margin-bottom:10px">
-                                <input style="width:650px;border:1px solid black;margin-bottom:10px" type="text" placeholder="Nhập câu..." id="txtInputTrans">
+                                @*<input style="width:650px;border:1px solid black;margin-bottom:10px" type="text" placeholder="Nhập câu..." id="txtInputTrans">*@
+                                <input style="width:650px" class="form-control bg-light border-0 small " type="text" name="keyword1" value="" placeholder="Nhập câu..." id="txtInputTrans" aria-label="Search" aria-describedby="basic-addon2">
                                 <input id="HidenDichCau" hidden />
                                 <div class="input-group-append">
-                                    <button id="btnDich" onclick="Trans();" class="btn btn-primary">Dịch</button>
+                                    <button class="btn btn-primary" id="btnDich" onclick="Trans();">Dịch</button>
                                 </div>
-                                <textarea id="textDich" style="height:400px" class="form-control">@ViewBag.Text</textarea>
+                                <textarea id="textDich" style="height:400px;margin-top:30px" class="form-control">@ViewBag.Text</textarea>
                             </div>
                         </form>
-
+                       
                     </div>
 
                 </div>
@@ -329,14 +330,14 @@
             @*<div class="fb-comments" data-href="https://localhost:44344/"
                 data-width="100%" data-numposts="5"></div>*@
 
-            <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="100%" data-numposts="5"></div>
+            @*<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="100%" data-numposts="5"></div>*@
 
 
         </div>
 
 
 
-        <aside class="col-md-4">
+        @*<aside class="col-md-4">
             <div class="p-3 mb-3 bg-light rounded">
                 <img src="~/Content/IMG/trang-phuc-dan-toc-e-de-namnu-01_636866758842832824.jpg">
 
@@ -344,7 +345,7 @@
             </div>
 
 
-        </aside>
+        </aside>*@
 
     </div>
 
